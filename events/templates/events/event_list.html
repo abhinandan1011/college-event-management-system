@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            padding: 40px;
+            color: white;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            opacity: 0.8;
+            margin-top: 8px;
+        }
+
+        .events-container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .event-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .event-card h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #00e6ff;
+        }
+
+        .event-card p {
+            font-size: 15px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .event-details {
+            margin-top: 15px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 14px;
+        }
+
+        .detail {
+            background: rgba(0,0,0,0.3);
+            padding: 8px 14px;
+            border-radius: 20px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            text-decoration: none;
+            color: white;
+            padding: 10px 26px;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            transition: opacity 0.3s;
+        }
+
+        .empty {
+            text-align: center;
+            opacity: 0.7;
+            margin-top: 60px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>{{ category|title }} Events 🎉</h1>
+        <p>Explore events curated by the admin</p>
+    </div>
+
+    <div class="events-container">
+
+        {% for event in events %}
+        <div class="event-card">
+            <h2>{{ event.title }}</h2>
+            <p>{{ event.description }}</p>
+
+            <div class="event-details">
+                <div class="detail">📅 {{ event.date }}</div>
+                <div class="detail">📍 {{ event.venue }}</div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="empty">
+            No events added yet.<br>
+            Please check back later ✨
+        </div>
+        {% endfor %}
+
+        <div style="text-align:center;">
+            <a href="/home/" class="back-btn">⬅ Back to Home</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

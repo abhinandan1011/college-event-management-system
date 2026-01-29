@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CEMS | Home</title>
+    <link rel="stylesheet" href="{% static 'events/home.css' %}">
+    <script src="{% static 'events/main.js' %}" defer></script>
+</head>
+<body>
+
+<div class="top-bar">
+    <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+</div>
+
+<section class="hero">
+    <div class="overlay">
+        <h1>Experience the Vibe 🎶</h1>
+        <p>College Event Management System</p>
+        <button onclick="scrollToEvents()">Explore Events</button>
+    </div>
+</section>
+
+<section id="events" class="events">
+    <h2>Upcoming Events</h2>
+
+    <div class="cards">
+        <div class="card" onclick="location.href='{% url 'event_list' 'tech' %}'">
+            <h3>Tech Fest</h3>
+            <p>View all technical events</p>
+        </div>
+
+        <div class="card" onclick="location.href='{% url 'event_list' 'cultural' %}'">
+            <h3>Cultural Fest</h3>
+            <p>View all cultural events</p>
+        </div>
+
+        <div class="card" onclick="location.href='{% url 'event_list' 'sports' %}'">
+            <h3>Sports Meet</h3>
+            <p>View all sports events</p>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

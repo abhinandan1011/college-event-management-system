@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CEMS | Login</title>
+    <link rel="stylesheet" href="{% static 'events/login.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+
+        <h1>Welcome to CEMS</h1>
+        <span class="emoji">🎉</span>
+        <p>Manage and celebrate every college event with ease!</p>
+
+        <!-- LOGIN FORM -->
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+
+            <button type="submit" name="login" class="btn">Login</button>
+        </form>
+
+        <p class="small">Don’t have an account?</p>
+
+        <!-- REGISTER FORM -->
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="register">
+            <input type="text" name="reg_username" placeholder="New Username" required>
+            <input type="password" name="reg_password" placeholder="New Password" required>
+
+            <button type="submit" class="btn secondary">Register</button>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>
